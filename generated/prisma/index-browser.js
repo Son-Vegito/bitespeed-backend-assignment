@@ -125,7 +125,7 @@ exports.Prisma.ContactScalarFieldEnum = {
   phoneNumber: 'phoneNumber',
   email: 'email',
   linkedId: 'linkedId',
-  linkedPrecedence: 'linkedPrecedence',
+  linkPrecedence: 'linkPrecedence',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

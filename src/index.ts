@@ -30,7 +30,7 @@ app.post('/identify', async (req, res) => {
     const primaryIds = new Set<number>();
 
     for (const contact of contacts) {
-        if (contact.linkedPrecedence === 'primary') {
+        if (contact.linkPrecedence === 'primary') {
             primaryIds.add(contact.id);
         }
         else if (contact.linkedId) {
@@ -69,7 +69,7 @@ app.post('/identify', async (req, res) => {
                 },
                 data: {
                     linkedId: primaryContact.id,
-                    linkedPrecedence: 'secondary'
+                    linkPrecedence: 'secondary'
                 }
             })
         }
@@ -82,7 +82,7 @@ app.post('/identify', async (req, res) => {
                     email,
                     phoneNumber,
                     linkedId: primaryContact.id,
-                    linkedPrecedence: 'secondary'
+                    linkPrecedence: 'secondary'
                 }
             })
         }
@@ -107,7 +107,7 @@ app.post('/identify', async (req, res) => {
     const phoneNumbers = [primaryContact.phoneNumber, ...[... new Set(finalContacts.map(c => c.phoneNumber).filter(phoneNumber => phoneNumber))]];
 
     const secondaryContactIds = finalContacts
-        .filter(c => c.linkedPrecedence === 'secondary')
+        .filter(c => c.linkPrecedence === 'secondary')
         .map(c => c.id);
 
     res.status(200).json({

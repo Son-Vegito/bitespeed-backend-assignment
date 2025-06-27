@@ -943,7 +943,7 @@ export namespace Prisma {
     phoneNumber: string | null
     email: string | null
     linkedId: number | null
-    linkedPrecedence: $Enums.Precedence | null
+    linkPrecedence: $Enums.Precedence | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -954,7 +954,7 @@ export namespace Prisma {
     phoneNumber: string | null
     email: string | null
     linkedId: number | null
-    linkedPrecedence: $Enums.Precedence | null
+    linkPrecedence: $Enums.Precedence | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -965,7 +965,7 @@ export namespace Prisma {
     phoneNumber: number
     email: number
     linkedId: number
-    linkedPrecedence: number
+    linkPrecedence: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -988,7 +988,7 @@ export namespace Prisma {
     phoneNumber?: true
     email?: true
     linkedId?: true
-    linkedPrecedence?: true
+    linkPrecedence?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -999,7 +999,7 @@ export namespace Prisma {
     phoneNumber?: true
     email?: true
     linkedId?: true
-    linkedPrecedence?: true
+    linkPrecedence?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -1010,7 +1010,7 @@ export namespace Prisma {
     phoneNumber?: true
     email?: true
     linkedId?: true
-    linkedPrecedence?: true
+    linkPrecedence?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -1108,7 +1108,7 @@ export namespace Prisma {
     phoneNumber: string | null
     email: string | null
     linkedId: number | null
-    linkedPrecedence: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -1138,7 +1138,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     email?: boolean
     linkedId?: boolean
-    linkedPrecedence?: boolean
+    linkPrecedence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1152,7 +1152,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     email?: boolean
     linkedId?: boolean
-    linkedPrecedence?: boolean
+    linkPrecedence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1164,7 +1164,7 @@ export namespace Prisma {
     phoneNumber?: boolean
     email?: boolean
     linkedId?: boolean
-    linkedPrecedence?: boolean
+    linkPrecedence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1176,13 +1176,13 @@ export namespace Prisma {
     phoneNumber?: boolean
     email?: boolean
     linkedId?: boolean
-    linkedPrecedence?: boolean
+    linkPrecedence?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "email" | "linkedId" | "linkedPrecedence" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["contact"]>
+  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "email" | "linkedId" | "linkPrecedence" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["contact"]>
   export type ContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
     secondaryContacts?: boolean | Contact$secondaryContactsArgs<ExtArgs>
@@ -1206,7 +1206,7 @@ export namespace Prisma {
       phoneNumber: string | null
       email: string | null
       linkedId: number | null
-      linkedPrecedence: $Enums.Precedence
+      linkPrecedence: $Enums.Precedence
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
@@ -1639,7 +1639,7 @@ export namespace Prisma {
     readonly phoneNumber: FieldRef<"Contact", 'String'>
     readonly email: FieldRef<"Contact", 'String'>
     readonly linkedId: FieldRef<"Contact", 'Int'>
-    readonly linkedPrecedence: FieldRef<"Contact", 'Precedence'>
+    readonly linkPrecedence: FieldRef<"Contact", 'Precedence'>
     readonly createdAt: FieldRef<"Contact", 'DateTime'>
     readonly updatedAt: FieldRef<"Contact", 'DateTime'>
     readonly deletedAt: FieldRef<"Contact", 'DateTime'>
@@ -2119,7 +2119,7 @@ export namespace Prisma {
     phoneNumber: 'phoneNumber',
     email: 'email',
     linkedId: 'linkedId',
-    linkedPrecedence: 'linkedPrecedence',
+    linkPrecedence: 'linkPrecedence',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -2238,7 +2238,7 @@ export namespace Prisma {
     phoneNumber?: StringNullableFilter<"Contact"> | string | null
     email?: StringNullableFilter<"Contact"> | string | null
     linkedId?: IntNullableFilter<"Contact"> | number | null
-    linkedPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
     createdAt?: DateTimeFilter<"Contact"> | Date | string
     updatedAt?: DateTimeFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
@@ -2251,7 +2251,7 @@ export namespace Prisma {
     phoneNumber?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     linkedId?: SortOrderInput | SortOrder
-    linkedPrecedence?: SortOrder
+    linkPrecedence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -2267,7 +2267,7 @@ export namespace Prisma {
     phoneNumber?: StringNullableFilter<"Contact"> | string | null
     email?: StringNullableFilter<"Contact"> | string | null
     linkedId?: IntNullableFilter<"Contact"> | number | null
-    linkedPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
     createdAt?: DateTimeFilter<"Contact"> | Date | string
     updatedAt?: DateTimeFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
@@ -2280,7 +2280,7 @@ export namespace Prisma {
     phoneNumber?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     linkedId?: SortOrderInput | SortOrder
-    linkedPrecedence?: SortOrder
+    linkPrecedence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -2299,7 +2299,7 @@ export namespace Prisma {
     phoneNumber?: StringNullableWithAggregatesFilter<"Contact"> | string | null
     email?: StringNullableWithAggregatesFilter<"Contact"> | string | null
     linkedId?: IntNullableWithAggregatesFilter<"Contact"> | number | null
-    linkedPrecedence?: EnumPrecedenceWithAggregatesFilter<"Contact"> | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceWithAggregatesFilter<"Contact"> | $Enums.Precedence
     createdAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Contact"> | Date | string | null
@@ -2308,7 +2308,7 @@ export namespace Prisma {
   export type ContactCreateInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2321,7 +2321,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2331,7 +2331,7 @@ export namespace Prisma {
   export type ContactUpdateInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2344,7 +2344,7 @@ export namespace Prisma {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     linkedId?: NullableIntFieldUpdateOperationsInput | number | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2356,7 +2356,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2365,7 +2365,7 @@ export namespace Prisma {
   export type ContactUpdateManyMutationInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2376,7 +2376,7 @@ export namespace Prisma {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     linkedId?: NullableIntFieldUpdateOperationsInput | number | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2473,7 +2473,7 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     email?: SortOrder
     linkedId?: SortOrder
-    linkedPrecedence?: SortOrder
+    linkPrecedence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -2489,7 +2489,7 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     email?: SortOrder
     linkedId?: SortOrder
-    linkedPrecedence?: SortOrder
+    linkPrecedence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -2500,7 +2500,7 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     email?: SortOrder
     linkedId?: SortOrder
-    linkedPrecedence?: SortOrder
+    linkPrecedence?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -2866,7 +2866,7 @@ export namespace Prisma {
   export type ContactCreateWithoutSecondaryContactsInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2878,7 +2878,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2892,7 +2892,7 @@ export namespace Prisma {
   export type ContactCreateWithoutPrimaryContactInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2903,7 +2903,7 @@ export namespace Prisma {
     id?: number
     phoneNumber?: string | null
     email?: string | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2934,7 +2934,7 @@ export namespace Prisma {
   export type ContactUpdateWithoutSecondaryContactsInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2946,7 +2946,7 @@ export namespace Prisma {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     linkedId?: NullableIntFieldUpdateOperationsInput | number | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2976,7 +2976,7 @@ export namespace Prisma {
     phoneNumber?: StringNullableFilter<"Contact"> | string | null
     email?: StringNullableFilter<"Contact"> | string | null
     linkedId?: IntNullableFilter<"Contact"> | number | null
-    linkedPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
     createdAt?: DateTimeFilter<"Contact"> | Date | string
     updatedAt?: DateTimeFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
@@ -2986,7 +2986,7 @@ export namespace Prisma {
     id?: number
     phoneNumber?: string | null
     email?: string | null
-    linkedPrecedence?: $Enums.Precedence
+    linkPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2995,7 +2995,7 @@ export namespace Prisma {
   export type ContactUpdateWithoutPrimaryContactInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3006,7 +3006,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3017,7 +3017,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    linkPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
