@@ -2308,7 +2308,7 @@ export namespace Prisma {
   export type ContactCreateInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2321,7 +2321,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2356,7 +2356,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2866,7 +2866,7 @@ export namespace Prisma {
   export type ContactCreateWithoutSecondaryContactsInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2878,7 +2878,7 @@ export namespace Prisma {
     phoneNumber?: string | null
     email?: string | null
     linkedId?: number | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2892,7 +2892,7 @@ export namespace Prisma {
   export type ContactCreateWithoutPrimaryContactInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2903,7 +2903,7 @@ export namespace Prisma {
     id?: number
     phoneNumber?: string | null
     email?: string | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -2986,7 +2986,7 @@ export namespace Prisma {
     id?: number
     phoneNumber?: string | null
     email?: string | null
-    linkPrecedence?: $Enums.Precedence
+    linkPrecedence: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
