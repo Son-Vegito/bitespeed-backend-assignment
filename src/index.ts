@@ -62,6 +62,7 @@ app.post('/identify', async (req, res) => {
 
         const contactsToUpdate = allContacts.slice(1);
 
+        // primary contacts turn into secondary
         for (const contact of contactsToUpdate) {
             await prisma.contact.update({
                 where: {
@@ -74,9 +75,13 @@ app.post('/identify', async (req, res) => {
             })
         }
 
-        const isPresent = allContacts.find((c) => c.email === email && c.phoneNumber === phoneNumber);
 
-        if (!isPresent) {
+
+        const isEmailPresent = allContacts.find((c) => c.email === email);
+        const isPhoneNumberPresent = allContacts.find((c) => c.phoneNumber === phoneNumber);
+
+        //new information
+        if ((!isEmailPresent && email) || (!isPhoneNumberPresent && phoneNumber)) {
             await prisma.contact.create({
                 data: {
                     email,
@@ -86,25 +91,40 @@ app.post('/identify', async (req, res) => {
                 }
             })
         }
+
+
     }
     else {
+
+        //no existing contact
         primaryContact = await prisma.contact.create({
             data: {
                 phoneNumber,
-                email
+                email,
+                linkPrecedence: 'primary'
             }
         })
     }
 
     const finalContacts = await prisma.contact.findMany({
         where: {
-            linkedId: primaryContact.id
+            OR: [
+                {
+                    id: primaryContact.id
+                },
+                {
+                    linkedId: primaryContact.id
+                }
+            ]
+        },
+        orderBy: {
+            createdAt: 'asc'
         }
     })
 
-    const emails = [primaryContact.email, ...[... new Set(finalContacts.map(c => c.email).filter(email => email))]];
+    const emails = [... new Set(finalContacts.map(c => c.email).filter(email => email))];
 
-    const phoneNumbers = [primaryContact.phoneNumber, ...[... new Set(finalContacts.map(c => c.phoneNumber).filter(phoneNumber => phoneNumber))]];
+    const phoneNumbers = [... new Set(finalContacts.map(c => c.phoneNumber).filter(phoneNumber => phoneNumber))];
 
     const secondaryContactIds = finalContacts
         .filter(c => c.linkPrecedence === 'secondary')
