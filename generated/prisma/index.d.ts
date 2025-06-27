@@ -881,6 +881,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type ContactCountOutputType
+   */
+
+  export type ContactCountOutputType = {
+    secondaryContacts: number
+  }
+
+  export type ContactCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    secondaryContacts?: boolean | ContactCountOutputTypeCountSecondaryContactsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContactCountOutputType
+     */
+    select?: ContactCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContactCountOutputType without action
+   */
+  export type ContactCountOutputTypeCountSecondaryContactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContactWhereInput
+  }
+
 
   /**
    * Models
@@ -1112,6 +1142,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
+    secondaryContacts?: boolean | Contact$secondaryContactsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["contact"]>
 
   export type ContactSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1123,6 +1156,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
   }, ExtArgs["result"]["contact"]>
 
   export type ContactSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1134,6 +1168,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
   }, ExtArgs["result"]["contact"]>
 
   export type ContactSelectScalar = {
@@ -1148,10 +1183,24 @@ export namespace Prisma {
   }
 
   export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phoneNumber" | "email" | "linkedId" | "linkedPrecedence" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["contact"]>
+  export type ContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
+    secondaryContacts?: boolean | Contact$secondaryContactsArgs<ExtArgs>
+    _count?: boolean | ContactCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContactIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
+  }
+  export type ContactIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    primaryContact?: boolean | Contact$primaryContactArgs<ExtArgs>
+  }
 
   export type $ContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Contact"
-    objects: {}
+    objects: {
+      primaryContact: Prisma.$ContactPayload<ExtArgs> | null
+      secondaryContacts: Prisma.$ContactPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       phoneNumber: string | null
@@ -1555,6 +1604,8 @@ export namespace Prisma {
    */
   export interface Prisma__ContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    primaryContact<T extends Contact$primaryContactArgs<ExtArgs> = {}>(args?: Subset<T, Contact$primaryContactArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    secondaryContacts<T extends Contact$secondaryContactsArgs<ExtArgs> = {}>(args?: Subset<T, Contact$secondaryContactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1609,6 +1660,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * Filter, which Contact to fetch.
      */
     where: ContactWhereUniqueInput
@@ -1627,6 +1682,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * Filter, which Contact to fetch.
      */
     where: ContactWhereUniqueInput
@@ -1644,6 +1703,10 @@ export namespace Prisma {
      * Omit specific fields from the Contact
      */
     omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
     /**
      * Filter, which Contact to fetch.
      */
@@ -1693,6 +1756,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * Filter, which Contact to fetch.
      */
     where?: ContactWhereInput
@@ -1741,6 +1808,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * Filter, which Contacts to fetch.
      */
     where?: ContactWhereInput
@@ -1784,6 +1855,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * The data needed to create a Contact.
      */
     data: XOR<ContactCreateInput, ContactUncheckedCreateInput>
@@ -1817,6 +1892,10 @@ export namespace Prisma {
      */
     data: ContactCreateManyInput | ContactCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1831,6 +1910,10 @@ export namespace Prisma {
      * Omit specific fields from the Contact
      */
     omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
     /**
      * The data needed to update a Contact.
      */
@@ -1883,6 +1966,10 @@ export namespace Prisma {
      * Limit how many Contacts to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -1897,6 +1984,10 @@ export namespace Prisma {
      * Omit specific fields from the Contact
      */
     omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
     /**
      * The filter to search for the Contact to update in case it exists.
      */
@@ -1924,6 +2015,10 @@ export namespace Prisma {
      */
     omit?: ContactOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    /**
      * Filter which Contact to delete.
      */
     where: ContactWhereUniqueInput
@@ -1944,6 +2039,49 @@ export namespace Prisma {
   }
 
   /**
+   * Contact.primaryContact
+   */
+  export type Contact$primaryContactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contact
+     */
+    omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
+  }
+
+  /**
+   * Contact.secondaryContacts
+   */
+  export type Contact$secondaryContactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contact
+     */
+    select?: ContactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contact
+     */
+    omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
+    where?: ContactWhereInput
+    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    cursor?: ContactWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+  }
+
+  /**
    * Contact without action
    */
   export type ContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1955,6 +2093,10 @@ export namespace Prisma {
      * Omit specific fields from the Contact
      */
     omit?: ContactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContactInclude<ExtArgs> | null
   }
 
 
@@ -2100,6 +2242,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Contact"> | Date | string
     updatedAt?: DateTimeFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
+    primaryContact?: XOR<ContactNullableScalarRelationFilter, ContactWhereInput> | null
+    secondaryContacts?: ContactListRelationFilter
   }
 
   export type ContactOrderByWithRelationInput = {
@@ -2111,6 +2255,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    primaryContact?: ContactOrderByWithRelationInput
+    secondaryContacts?: ContactOrderByRelationAggregateInput
   }
 
   export type ContactWhereUniqueInput = Prisma.AtLeast<{
@@ -2125,6 +2271,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Contact"> | Date | string
     updatedAt?: DateTimeFilter<"Contact"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
+    primaryContact?: XOR<ContactNullableScalarRelationFilter, ContactWhereInput> | null
+    secondaryContacts?: ContactListRelationFilter
   }, "id">
 
   export type ContactOrderByWithAggregationInput = {
@@ -2160,11 +2308,12 @@ export namespace Prisma {
   export type ContactCreateInput = {
     phoneNumber?: string | null
     email?: string | null
-    linkedId?: number | null
     linkedPrecedence?: $Enums.Precedence
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    primaryContact?: ContactCreateNestedOneWithoutSecondaryContactsInput
+    secondaryContacts?: ContactCreateNestedManyWithoutPrimaryContactInput
   }
 
   export type ContactUncheckedCreateInput = {
@@ -2176,16 +2325,18 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    secondaryContacts?: ContactUncheckedCreateNestedManyWithoutPrimaryContactInput
   }
 
   export type ContactUpdateInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedId?: NullableIntFieldUpdateOperationsInput | number | null
     linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    primaryContact?: ContactUpdateOneWithoutSecondaryContactsNestedInput
+    secondaryContacts?: ContactUpdateManyWithoutPrimaryContactNestedInput
   }
 
   export type ContactUncheckedUpdateInput = {
@@ -2197,6 +2348,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    secondaryContacts?: ContactUncheckedUpdateManyWithoutPrimaryContactNestedInput
   }
 
   export type ContactCreateManyInput = {
@@ -2213,7 +2365,6 @@ export namespace Prisma {
   export type ContactUpdateManyMutationInput = {
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedId?: NullableIntFieldUpdateOperationsInput | number | null
     linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2297,9 +2448,24 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type ContactNullableScalarRelationFilter = {
+    is?: ContactWhereInput | null
+    isNot?: ContactWhereInput | null
+  }
+
+  export type ContactListRelationFilter = {
+    every?: ContactWhereInput
+    some?: ContactWhereInput
+    none?: ContactWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type ContactOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ContactCountOrderByAggregateInput = {
@@ -2433,16 +2599,28 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type ContactCreateNestedOneWithoutSecondaryContactsInput = {
+    create?: XOR<ContactCreateWithoutSecondaryContactsInput, ContactUncheckedCreateWithoutSecondaryContactsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutSecondaryContactsInput
+    connect?: ContactWhereUniqueInput
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type ContactCreateNestedManyWithoutPrimaryContactInput = {
+    create?: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput> | ContactCreateWithoutPrimaryContactInput[] | ContactUncheckedCreateWithoutPrimaryContactInput[]
+    connectOrCreate?: ContactCreateOrConnectWithoutPrimaryContactInput | ContactCreateOrConnectWithoutPrimaryContactInput[]
+    createMany?: ContactCreateManyPrimaryContactInputEnvelope
+    connect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+  }
+
+  export type ContactUncheckedCreateNestedManyWithoutPrimaryContactInput = {
+    create?: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput> | ContactCreateWithoutPrimaryContactInput[] | ContactUncheckedCreateWithoutPrimaryContactInput[]
+    connectOrCreate?: ContactCreateOrConnectWithoutPrimaryContactInput | ContactCreateOrConnectWithoutPrimaryContactInput[]
+    createMany?: ContactCreateManyPrimaryContactInputEnvelope
+    connect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type EnumPrecedenceFieldUpdateOperationsInput = {
@@ -2457,12 +2635,58 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type ContactUpdateOneWithoutSecondaryContactsNestedInput = {
+    create?: XOR<ContactCreateWithoutSecondaryContactsInput, ContactUncheckedCreateWithoutSecondaryContactsInput>
+    connectOrCreate?: ContactCreateOrConnectWithoutSecondaryContactsInput
+    upsert?: ContactUpsertWithoutSecondaryContactsInput
+    disconnect?: ContactWhereInput | boolean
+    delete?: ContactWhereInput | boolean
+    connect?: ContactWhereUniqueInput
+    update?: XOR<XOR<ContactUpdateToOneWithWhereWithoutSecondaryContactsInput, ContactUpdateWithoutSecondaryContactsInput>, ContactUncheckedUpdateWithoutSecondaryContactsInput>
+  }
+
+  export type ContactUpdateManyWithoutPrimaryContactNestedInput = {
+    create?: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput> | ContactCreateWithoutPrimaryContactInput[] | ContactUncheckedCreateWithoutPrimaryContactInput[]
+    connectOrCreate?: ContactCreateOrConnectWithoutPrimaryContactInput | ContactCreateOrConnectWithoutPrimaryContactInput[]
+    upsert?: ContactUpsertWithWhereUniqueWithoutPrimaryContactInput | ContactUpsertWithWhereUniqueWithoutPrimaryContactInput[]
+    createMany?: ContactCreateManyPrimaryContactInputEnvelope
+    set?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    disconnect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    delete?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    connect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    update?: ContactUpdateWithWhereUniqueWithoutPrimaryContactInput | ContactUpdateWithWhereUniqueWithoutPrimaryContactInput[]
+    updateMany?: ContactUpdateManyWithWhereWithoutPrimaryContactInput | ContactUpdateManyWithWhereWithoutPrimaryContactInput[]
+    deleteMany?: ContactScalarWhereInput | ContactScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ContactUncheckedUpdateManyWithoutPrimaryContactNestedInput = {
+    create?: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput> | ContactCreateWithoutPrimaryContactInput[] | ContactUncheckedCreateWithoutPrimaryContactInput[]
+    connectOrCreate?: ContactCreateOrConnectWithoutPrimaryContactInput | ContactCreateOrConnectWithoutPrimaryContactInput[]
+    upsert?: ContactUpsertWithWhereUniqueWithoutPrimaryContactInput | ContactUpsertWithWhereUniqueWithoutPrimaryContactInput[]
+    createMany?: ContactCreateManyPrimaryContactInputEnvelope
+    set?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    disconnect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    delete?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    connect?: ContactWhereUniqueInput | ContactWhereUniqueInput[]
+    update?: ContactUpdateWithWhereUniqueWithoutPrimaryContactInput | ContactUpdateWithWhereUniqueWithoutPrimaryContactInput[]
+    updateMany?: ContactUpdateManyWithWhereWithoutPrimaryContactInput | ContactUpdateManyWithWhereWithoutPrimaryContactInput[]
+    deleteMany?: ContactScalarWhereInput | ContactScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2637,6 +2861,166 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type ContactCreateWithoutSecondaryContactsInput = {
+    phoneNumber?: string | null
+    email?: string | null
+    linkedPrecedence?: $Enums.Precedence
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    primaryContact?: ContactCreateNestedOneWithoutSecondaryContactsInput
+  }
+
+  export type ContactUncheckedCreateWithoutSecondaryContactsInput = {
+    id?: number
+    phoneNumber?: string | null
+    email?: string | null
+    linkedId?: number | null
+    linkedPrecedence?: $Enums.Precedence
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ContactCreateOrConnectWithoutSecondaryContactsInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutSecondaryContactsInput, ContactUncheckedCreateWithoutSecondaryContactsInput>
+  }
+
+  export type ContactCreateWithoutPrimaryContactInput = {
+    phoneNumber?: string | null
+    email?: string | null
+    linkedPrecedence?: $Enums.Precedence
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    secondaryContacts?: ContactCreateNestedManyWithoutPrimaryContactInput
+  }
+
+  export type ContactUncheckedCreateWithoutPrimaryContactInput = {
+    id?: number
+    phoneNumber?: string | null
+    email?: string | null
+    linkedPrecedence?: $Enums.Precedence
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    secondaryContacts?: ContactUncheckedCreateNestedManyWithoutPrimaryContactInput
+  }
+
+  export type ContactCreateOrConnectWithoutPrimaryContactInput = {
+    where: ContactWhereUniqueInput
+    create: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput>
+  }
+
+  export type ContactCreateManyPrimaryContactInputEnvelope = {
+    data: ContactCreateManyPrimaryContactInput | ContactCreateManyPrimaryContactInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ContactUpsertWithoutSecondaryContactsInput = {
+    update: XOR<ContactUpdateWithoutSecondaryContactsInput, ContactUncheckedUpdateWithoutSecondaryContactsInput>
+    create: XOR<ContactCreateWithoutSecondaryContactsInput, ContactUncheckedCreateWithoutSecondaryContactsInput>
+    where?: ContactWhereInput
+  }
+
+  export type ContactUpdateToOneWithWhereWithoutSecondaryContactsInput = {
+    where?: ContactWhereInput
+    data: XOR<ContactUpdateWithoutSecondaryContactsInput, ContactUncheckedUpdateWithoutSecondaryContactsInput>
+  }
+
+  export type ContactUpdateWithoutSecondaryContactsInput = {
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    primaryContact?: ContactUpdateOneWithoutSecondaryContactsNestedInput
+  }
+
+  export type ContactUncheckedUpdateWithoutSecondaryContactsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    linkedId?: NullableIntFieldUpdateOperationsInput | number | null
+    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ContactUpsertWithWhereUniqueWithoutPrimaryContactInput = {
+    where: ContactWhereUniqueInput
+    update: XOR<ContactUpdateWithoutPrimaryContactInput, ContactUncheckedUpdateWithoutPrimaryContactInput>
+    create: XOR<ContactCreateWithoutPrimaryContactInput, ContactUncheckedCreateWithoutPrimaryContactInput>
+  }
+
+  export type ContactUpdateWithWhereUniqueWithoutPrimaryContactInput = {
+    where: ContactWhereUniqueInput
+    data: XOR<ContactUpdateWithoutPrimaryContactInput, ContactUncheckedUpdateWithoutPrimaryContactInput>
+  }
+
+  export type ContactUpdateManyWithWhereWithoutPrimaryContactInput = {
+    where: ContactScalarWhereInput
+    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyWithoutPrimaryContactInput>
+  }
+
+  export type ContactScalarWhereInput = {
+    AND?: ContactScalarWhereInput | ContactScalarWhereInput[]
+    OR?: ContactScalarWhereInput[]
+    NOT?: ContactScalarWhereInput | ContactScalarWhereInput[]
+    id?: IntFilter<"Contact"> | number
+    phoneNumber?: StringNullableFilter<"Contact"> | string | null
+    email?: StringNullableFilter<"Contact"> | string | null
+    linkedId?: IntNullableFilter<"Contact"> | number | null
+    linkedPrecedence?: EnumPrecedenceFilter<"Contact"> | $Enums.Precedence
+    createdAt?: DateTimeFilter<"Contact"> | Date | string
+    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Contact"> | Date | string | null
+  }
+
+  export type ContactCreateManyPrimaryContactInput = {
+    id?: number
+    phoneNumber?: string | null
+    email?: string | null
+    linkedPrecedence?: $Enums.Precedence
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type ContactUpdateWithoutPrimaryContactInput = {
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    secondaryContacts?: ContactUpdateManyWithoutPrimaryContactNestedInput
+  }
+
+  export type ContactUncheckedUpdateWithoutPrimaryContactInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    secondaryContacts?: ContactUncheckedUpdateManyWithoutPrimaryContactNestedInput
+  }
+
+  export type ContactUncheckedUpdateManyWithoutPrimaryContactInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    linkedPrecedence?: EnumPrecedenceFieldUpdateOperationsInput | $Enums.Precedence
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
