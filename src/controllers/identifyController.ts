@@ -1,10 +1,24 @@
 import { Request, Response } from "express";
 import { Contact, PrismaClient } from "../../generated/prisma";
+import { z } from "zod";
 const prisma = new PrismaClient();
+
+const identifySchema = z.object({
+    email: z.string().email().optional(),
+    phoneNumber: z.string().refine(val => [...val].every(char => "1234567890".includes(char)), {
+        message: 'Must be a string containing only digits'
+    }).optional()
+});
 
 export const identifyContact = async (req: Request, res: Response) => {
 
-    const { email, phoneNumber } = req.body;
+    const parseResult = identifySchema.safeParse(req.body);
+    if (!parseResult.success) {
+        res.status(400).json({ message: 'Invalid input', errors: parseResult.error.errors });
+        return;
+    }
+
+    const { email, phoneNumber } = parseResult.data;
 
     if (!email && !phoneNumber) {
         res.status(400).json({
