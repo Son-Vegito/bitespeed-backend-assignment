@@ -17,7 +17,7 @@ Assignment Link- https://bitespeed.notion.site/Bitespeed-Backend-Task-Identity-R
 
 ## Hosted Endpoint
 
-https://bitespeed-backend-assignment-ixvs.onrender.com/
+https://bitespeed-backend-assignment-ixvs.onrender.com/identify
 
 ---
 
