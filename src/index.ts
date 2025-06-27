@@ -1,15 +1,126 @@
 
 import express from 'express';
+import { Contact, PrismaClient } from '../generated/prisma';
 const PORT = 3000;
-
+const prisma = new PrismaClient();
 const app = express();
 
 app.use(express.json());
 
-app.post('/identify', (req, res) => {
+app.post('/identify', async (req, res) => {
+
+    const { email, phoneNumber } = req.body;
+
+    if (!email && !phoneNumber) {
+        res.status(400).json({
+            message: "At least email or phone number is required"
+        })
+        return;
+    }
+
+    const contacts = await prisma.contact.findMany({
+        where: {
+            OR: [
+                { phoneNumber: phoneNumber || null },
+                { email: email || null }
+            ]
+        }
+    })
+
+    const primaryIds = new Set<number>();
+
+    for (const contact of contacts) {
+        if (contact.linkedPrecedence === 'primary') {
+            primaryIds.add(contact.id);
+        }
+        else if (contact.linkedId) {
+            primaryIds.add(contact.linkedId);
+        }
+    }
+
+    let primaryContact: Contact;
+
+    if (primaryIds.size > 0) {
+
+        const allContacts = await prisma.contact.findMany({
+            where: {
+                OR: [
+                    {
+                        id: { in: [...primaryIds] }
+                    },
+                    {
+                        linkedId: { in: [...primaryIds] }
+                    }
+                ]
+            },
+            orderBy: {
+                createdAt: 'asc'
+            }
+        })
+
+        primaryContact = allContacts[0];
+
+        const contactsToUpdate = allContacts.slice(1);
+
+        for (const contact of contactsToUpdate) {
+            await prisma.contact.update({
+                where: {
+                    id: contact.id
+                },
+                data: {
+                    linkedId: primaryContact.id,
+                    linkedPrecedence: 'secondary'
+                }
+            })
+        }
+
+        const isPresent = allContacts.find((c) => c.email === email && c.phoneNumber === phoneNumber);
+
+        if (!isPresent) {
+            await prisma.contact.create({
+                data: {
+                    email,
+                    phoneNumber,
+                    linkedId: primaryContact.id,
+                    linkedPrecedence: 'secondary'
+                }
+            })
+        }
+    }
+    else {
+        primaryContact = await prisma.contact.create({
+            data: {
+                phoneNumber,
+                email
+            }
+        })
+    }
+
+    const finalContacts = await prisma.contact.findMany({
+        where: {
+            linkedId: primaryContact.id
+        }
+    })
+
+    const emails = [primaryContact.email, ...[... new Set(finalContacts.map(c => c.email).filter(email => email))]];
+
+    const phoneNumbers = [primaryContact.phoneNumber, ...[... new Set(finalContacts.map(c => c.phoneNumber).filter(phoneNumber => phoneNumber))]];
+
+    const secondaryContactIds = finalContacts
+        .filter(c => c.linkedPrecedence === 'secondary')
+        .map(c => c.id);
+
+    res.status(200).json({
+        contact: {
+            primaryContactId: primaryContact.id,
+            emails,
+            phoneNumbers,
+            secondaryContactIds
+        }
+    })
 
 })
 
 app.listen(PORT, () => {
-    console.log('App listening on PORT', PORT);
+    console.log('Server listening on PORT', PORT);
 })
