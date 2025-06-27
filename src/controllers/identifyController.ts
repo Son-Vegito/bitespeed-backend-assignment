@@ -4,10 +4,10 @@ import { z } from "zod";
 const prisma = new PrismaClient();
 
 const identifySchema = z.object({
-    email: z.string().email().optional(),
+    email: z.string().email().nullable().optional(),
     phoneNumber: z.string().refine(val => [...val].every(char => "1234567890".includes(char)), {
         message: 'Must be a string containing only digits'
-    }).optional()
+    }).nullable().optional()
 });
 
 export const identifyContact = async (req: Request, res: Response) => {
